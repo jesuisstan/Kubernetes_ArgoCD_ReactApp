@@ -1,0 +1,34 @@
+##The Service section defines a ClusterIP service
+apiVersion: v1
+kind: Service
+metadata:
+  name: wil42-app-service
+spec:
+  ports:
+  - port: 8888
+    protocol: TCP
+  selector:
+    app: wil42-app
+---
+##The Deployment section specifies the desired state of the application
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wil42-app-deployment
+  labels:
+    app: wil42-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wil42-app
+  template:
+    metadata:
+      labels:
+        app: wil42-app
+    spec:
+      containers:
+      - name: wil42-app-container
+        image: wil42/playground:v1
+        ports:
+        - containerPort: 8888
