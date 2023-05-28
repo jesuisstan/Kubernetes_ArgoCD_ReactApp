@@ -33,7 +33,7 @@ spec:
         ports:
         - containerPort: 8888
 ---
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   name: website-ingress
