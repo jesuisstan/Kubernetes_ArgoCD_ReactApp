@@ -32,13 +32,13 @@ spec:
         image: wil42/playground:v1
         ports:
         - containerPort: 8888
-  ---
+---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: website-ingress
   labels:
-    app: wil42-app-ingress
+    app: wil42-app
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
     traefik.ingress.kubernetes.io/rewrite-target: /
@@ -46,7 +46,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /wil42
+      - path: /wil42-app
         backend:
-          serviceName: website-service
+          serviceName: wil42-app-service
           servicePort: 8888
