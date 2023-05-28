@@ -46,7 +46,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /wil42-app
+      - path: /app
         backend:
           serviceName: wil42-app-service
           servicePort: 8888
