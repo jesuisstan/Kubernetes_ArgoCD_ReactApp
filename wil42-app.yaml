@@ -5,7 +5,7 @@ metadata:
   name: todo-app-service
 spec:
   ports:
-  - port: 3000
+  - port: 8888
     protocol: TCP
   selector:
     app: todo-app
@@ -31,21 +31,26 @@ spec:
       - name: todo-app-container
         image: jesuisstan/todo-react-app:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 8888
 ---
 ## The Ingress section defines the Ingress resource
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: todo-app-ingress
+  name: website-ingress
+  labels:
+    app: wil42-app
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    traefik.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: /todo-app
+      - path: /wil42-app
         pathType: Prefix
         backend:
           service:
-            name: todo-app-service
+            name: wil42-app-service
             port:
-              number: 3000
+              number: 8888
