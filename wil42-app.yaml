@@ -2,34 +2,34 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wil42-app-service
+  name: todo-app-service
 spec:
   ports:
   - port: 8888
     protocol: TCP
   selector:
-    app: wil42-app
+    app: todo-app
 ---
 ##The Deployment section specifies the desired state of the application
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wil42-app-deployment
+  name: todo-app-deployment
   labels:
-    app: wil42-app
+    app: todo-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wil42-app
+      app: todo-app
   template:
     metadata:
       labels:
-        app: wil42-app
+        app: todo-app
     spec:
       containers:
-      - name: wil42-app-container
-        image: wil42/playground:v2
+      - name: todo-app-container
+        image: jesuisstan/todo-react-app:latest
         ports:
         - containerPort: 8888
 ---
@@ -38,7 +38,7 @@ kind: Ingress
 metadata:
   name: website-ingress
   labels:
-    app: wil42-app
+    app: todo-app
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
     traefik.ingress.kubernetes.io/rewrite-target: /
@@ -46,10 +46,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /wil42-app
+      - path: /todo-app
         pathType: Prefix
         backend:
           service:
-            name: wil42-app-service
+            name: todo-app-service
             port:
               number: 8888
