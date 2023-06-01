@@ -1,4 +1,4 @@
-# acaren_iot_p3
+# manifest file for Kubernetes TodoReactApp
 
 The manifest file defines a Kubernetes Deployment and Service for the WIL42 application.
 
@@ -7,4 +7,4 @@ The Deployment section specifies the desired state of the application. It sets t
 The Service section defines a ClusterIP service that selects the Pods labeled with app: wil42-app. It exposes port 8888 and forwards traffic to the targetPort 8888 of the Pods.\
 (!) Without a Service, other resources or external entities won't be able to access the WIL42 application using a stable network endpoint. The application will only be accessible within the cluster's network, and you won't be able to access it from outside the cluster.
 
-Related project: https://github.com/jesuisstan/vagrant_kubernetes
+Related project: https://github.com/jesuisstan/Kubernetes_ArgoCD_for_TodoReactApp
