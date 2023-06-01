@@ -1,45 +1,44 @@
-## The Service section defines a ClusterIP service
+##The Service section defines a ClusterIP service
 apiVersion: v1
 kind: Service
 metadata:
-  name: todo-app-service
+  name: wil42-app-service
 spec:
   ports:
   - port: 8888
     protocol: TCP
   selector:
-    app: todo-app
+    app: wil42-app
 ---
-## The Deployment section specifies the desired state of the application
+##The Deployment section specifies the desired state of the application
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-app-deployment
+  name: wil42-app-deployment
   labels:
-    app: todo-app
+    app: wil42-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todo-app
+      app: wil42-app
   template:
     metadata:
       labels:
-        app: todo-app
+        app: wil42-app
     spec:
       containers:
-      - name: todo-app-container
+      - name: wil42-app-container
         image: jesuisstan/todo-react-app:v8888
         ports:
         - containerPort: 8888
 ---
-## The Ingress section defines the Ingress resource
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: todo-ingress
+  name: website-ingress
   labels:
-    app: todo-app
+    app: wil42-app
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
     traefik.ingress.kubernetes.io/rewrite-target: /
@@ -47,10 +46,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /todo-app
+      - path: /wil42-app
         pathType: Prefix
         backend:
           service:
-            name: todo-app-service
+            name: wil42-app-service
             port:
               number: 8888
