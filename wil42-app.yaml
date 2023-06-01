@@ -9,7 +9,7 @@ spec:
     protocol: TCP
   selector:
     app: todo-app
-
+---
 ## The Deployment section specifies the desired state of the application
 apiVersion: apps/v1
 kind: Deployment
@@ -32,7 +32,7 @@ spec:
         image: jesuisstan/todo-react-app:latest
         ports:
         - containerPort: 3000
-
+---
 ## The Ingress section defines the Ingress resource
 apiVersion: networking.k8s.io/v1
 kind: Ingress
