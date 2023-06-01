@@ -5,7 +5,7 @@ metadata:
   name: wil42-app-service
 spec:
   ports:
-  - port: 8888
+  - port: 3000
     protocol: TCP
   selector:
     app: wil42-app
@@ -31,7 +31,7 @@ spec:
       - name: wil42-app-container
         image: jesuisstan/todo-react-app:v8888
         ports:
-        - containerPort: 8888
+        - containerPort: 3000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -52,4 +52,4 @@ spec:
           service:
             name: wil42-app-service
             port:
-              number: 8888
+              number: 3000
