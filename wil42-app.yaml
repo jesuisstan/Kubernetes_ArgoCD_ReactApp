@@ -37,9 +37,9 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: website-ingress
+  name: todo-ingress
   labels:
-    app: wil42-app
+    app: todo-app
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
     traefik.ingress.kubernetes.io/rewrite-target: /
@@ -47,10 +47,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /wil42-app
+      - path: /todo-app
         pathType: Prefix
         backend:
           service:
-            name: wil42-app-service
+            name: todo-app-service
             port:
               number: 8888
