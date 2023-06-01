@@ -5,7 +5,7 @@ metadata:
 spec:
   project: development
   source:
-    repoURL: https://github.com/jesuisstan/acaren_iot_p3.git
+    repoURL: https://github.com/jesuisstan/Kubernetes_ArgoCD_ReactApp.git
     targetRevision: HEAD
     path: app_manifests
     directory:
