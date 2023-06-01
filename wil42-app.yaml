@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: todo-app-container
-        image: jesuisstan/todo-react-app:latest
+        image: jesuisstan/todo-react-app:v8888
         ports:
         - containerPort: 8888
 ---
